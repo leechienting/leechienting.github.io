@@ -11,10 +11,10 @@
 
 			function doPhotoUpload() {
 				// ****請提供上傳欄位
-				var user = {userName:"John", userAge:"25", gender:"male"};
+				var photoInfo = {userName:"John", userAge:"25", gender:"male"};
 				var message = {
-					'contentObject'	: user,
-					'callback' : 'didPhotoUpload(returnCode, returnMessage)'
+					'contentObject'	: photoInfo,
+					'callback' : 'didPhotoUpload(returnObject, contentObject)'
 				};
 				callNativeDevice('photoUpload',message)
 			}
