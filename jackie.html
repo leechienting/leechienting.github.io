@@ -1,0 +1,51 @@
+<html>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,shrink-to-fit=no" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<head>
+		<script src="MitakeJS.js"></script>
+		<script type="text/javascript">
+			// Photo Upload
+			function didPhotoUpload(returnObject, contentObject) {
+				alert(returnObject['returnCode'] + ':' + returnObject['returnMessage'] + ':' + contentObject['deviceType'])
+			}
+
+			function doPhotoUpload() {
+				// ****請提供上傳欄位
+				var user = {userName:"John", userAge:"25", gender:"male"};
+				var message = {
+					'contentObject'	: user,
+					'callback' : 'didPhotoUpload(returnCode, returnMessage)'
+				};
+				callNativeDevice('photoUpload',message)
+			}
+
+			// Line Share
+			function doLineShare() {
+				var param = {url:"https://store.line.me/home/zh-Hant"};
+				var message = {
+					'content' : param
+				};
+				callNativeDevice('lineShare',message)
+			}
+
+			// Open Another Link
+			function doOpenAnotherLink() {
+				var message = {
+					'url' : 'https://www.google.com.tw'
+				};
+				callNativeDevice('openAnotherLink',message)
+			}
+
+		</script>
+	</head>
+	
+	<body>
+		<input type="button" value="拍照上傳" onclick="doPhotoUpload();">
+		<br><br>
+		<input type="button" value="Line分享" onclick="doLineShare();">
+		<br><br>
+		<input type="button" value="另開連結" onclick="doOpenAnotherLink();">
+		<br><br>
+	</body>
+	
+</html>
